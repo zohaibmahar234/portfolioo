@@ -9,9 +9,19 @@ const projects = [
   { title: 'BANK MANAGEMENT SYSTEM', desc: 'Full-featured banking application with account creation, fund transfers, transaction history, and admin controls.', tags: ['PYTHON', 'MONGODB', 'FLASK'], category: 'python', github: 'https://github.com/zohaibmahar234', color: '#e6c364', icon: 'account_balance' },
   { title: 'SENTIMENT ANALYSIS', desc: 'NLP-powered sentiment analysis engine for Amazon product reviews with high-accuracy opinion classification.', tags: ['PYTHON', 'NLP', 'SKLEARN'], category: 'ai', github: 'https://github.com/zohaibmahar234', color: '#fb923c', icon: 'sentiment_satisfied' },
   { title: 'ONLINE CAR SHOWROOM', desc: 'Full-stack online car dealership platform with inventory management, advanced filters, and booking system.', tags: ['REACT', 'NODE.JS', 'MONGODB'], category: 'web', github: 'https://github.com/zohaibmahar234', color: '#e6c364', icon: 'directions_car' },
+  { title: 'REAL-TIME FRAUD DETECTION', desc: 'Production-ready machine learning model for real-time financial fraud detection, deployed as a scalable REST API with low-latency inference.', tags: ['PYTHON', 'SCIKIT-LEARN', 'FASTAPI', 'ML'], category: 'ml', github: 'https://github.com/zohaibmahar234', color: '#f43f5e', icon: 'security' },
+  { title: 'END-TO-END RAG SYSTEM', desc: 'A production-grade Retrieval-Augmented Generation system with a full evaluation pipeline.', tags: ['PYTHON', 'LANGCHAIN', 'FAISS', 'LLM'], category: 'ai', github: 'https://github.com/zohaibmahar234', color: '#818cf8', icon: 'hub' },
+  { title: 'MULTI-AGENT WORKFLOW SYSTEM', desc: 'Orchestrated multi-agent system built with LangGraph — featuring autonomous task delegation, tool use, memory, and stateful graph-based execution.', tags: ['LANGGRAPH', 'PYTHON', 'LLM', 'AGENTS'], category: 'ai', github: 'https://github.com/zohaibmahar234', color: '#c084fc', icon: 'account_tree' },
+  { title: 'MLOPS PIPELINE', desc: 'End-to-end MLOps pipeline integrating MLflow for experiment tracking, DVC for data versioning, and CI/CD automation for model deployment.', tags: ['MLFLOW', 'DVC', 'CI/CD', 'PYTHON'], category: 'ml', github: 'https://github.com/zohaibmahar234', color: '#34d399', icon: 'analytics' },
+  { title: 'CAUSAL INFERENCE STUDY', desc: 'Advanced Bayesian A/B testing framework using causal inference methods to move beyond correlation and quantify true treatment effects.', tags: ['PYTHON', 'PYMC', 'BAYESIAN', 'STATISTICS'], category: 'ml', github: 'https://github.com/zohaibmahar234', color: '#fbbf24', icon: 'science' },
+  { title: 'FINANCIAL MODEL + MONTE CARLO', desc: 'Comprehensive Excel-based financial model with Monte Carlo simulation for risk analysis, scenario planning, and investment forecasting.', tags: ['EXCEL', 'VBA', 'MONTE CARLO', 'FINANCE'], category: 'excel', github: 'https://github.com/zohaibmahar234', color: '#22c55e', icon: 'show_chart' },
+  { title: 'VBA AUTOMATION + POWER QUERY ETL', desc: 'Enterprise-grade VBA automation suite combined with Power Query ETL pipeline for automated data extraction, transformation, and reporting.', tags: ['VBA', 'POWER QUERY', 'EXCEL', 'ETL'], category: 'excel', github: 'https://github.com/zohaibmahar234', color: '#16a34a', icon: 'table_chart' },
+  { title: 'AI-POWERED SAAS APP', desc: 'Full-stack SaaS application powered by LLMs, built with Next.js frontend, FastAPI backend, Stripe payment integration, and AI-driven features.', tags: ['NEXT.JS', 'FASTAPI', 'LLM', 'STRIPE'], category: 'web', github: 'https://github.com/zohaibmahar234', color: '#0ea5e9', icon: 'rocket_launch' },
+  { title: 'REAL-TIME COLLABORATION TOOL', desc: 'Live collaboration platform with WebSocket-powered real-time sync, React frontend, PostgreSQL persistence, and conflict resolution.', tags: ['REACT', 'WEBSOCKETS', 'POSTGRESQL', 'NODE.JS'], category: 'web', github: 'https://github.com/zohaibmahar234', color: '#06b6d4', icon: 'groups' },
 ]
 
-const filterKeys = ['all', 'ai', 'web', 'python']
+const filterKeys = ['all', 'ai', 'ml', 'web', 'python', 'excel']
+const filterLabels = { all: 'All Projects', ai: 'AI / LLM', ml: 'Machine Learning', web: 'Full Stack', python: 'Python', excel: 'Excel' }
 
 export default function Projects() {
   const [active, setActive] = useState('all')
@@ -24,20 +34,15 @@ export default function Projects() {
         <span className="font-label-caps text-label-caps text-primary mb-3 block">{t.projects.label}</span>
         <h2 className="font-headline-lg text-3xl md:text-headline-lg text-on-surface">{t.projects.title}</h2>
       </div>
-
-      {/* Filter buttons */}
       <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-14 reveal">
-        {filterKeys.map((key, i) => (
+        {filterKeys.map((key) => (
           <button key={key} onClick={() => setActive(key)}
             className={`px-4 md:px-5 py-2 font-label-caps text-[11px] border transition-all duration-300 ${active === key ? 'bg-primary text-on-primary border-primary' : 'border-outline-variant/30 text-outline hover:border-primary hover:text-primary'}`}>
-            {t.projects.filters[i]}
-            <span className="ml-1.5 opacity-50 text-[10px]">
-              {key === 'all' ? projects.length : projects.filter(p => p.category === key).length}
-            </span>
+            {filterLabels[key]}
+            <span className="ml-1.5 opacity-50 text-[10px]">{key === 'all' ? projects.length : projects.filter(p => p.category === key).length}</span>
           </button>
         ))}
       </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-gutter reveal">
         {filtered.map((p) => (
           <div key={p.title} className="group bg-surface-container border border-outline-variant/10 overflow-hidden hover:border-primary/50 transition-all duration-500">
@@ -46,9 +51,8 @@ export default function Projects() {
               <div className="flex flex-col items-center gap-3 relative z-10">
                 <span className="material-symbols-outlined text-5xl md:text-7xl" style={{ color: p.color, opacity: 0.6, fontVariationSettings: "'FILL' 1" }}>{p.icon}</span>
                 <div className="flex flex-wrap gap-1 justify-center px-2">
-                  {p.tags.slice(0, 2).map(t => (
-                    <span key={t} className="px-2 py-0.5 text-[9px] font-label-caps border rounded"
-                      style={{ borderColor: `${p.color}40`, color: p.color, background: `${p.color}10` }}>{t}</span>
+                  {p.tags.slice(0, 2).map(tag => (
+                    <span key={tag} className="px-2 py-0.5 text-[9px] font-label-caps border rounded" style={{ borderColor: `${p.color}40`, color: p.color, background: `${p.color}10` }}>{tag}</span>
                   ))}
                 </div>
               </div>
