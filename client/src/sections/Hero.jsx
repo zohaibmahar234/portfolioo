@@ -51,22 +51,10 @@ export default function Hero() {
       id="hero"
     >
       <div
-        className="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-16 w-full transition-all duration-700"
+        className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 w-full transition-all duration-700"
         style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(30px)' }}
       >
-        {/* Photo — mobile pe upar */}
-        <div className="flex-shrink-0 flex items-center justify-center w-full lg:hidden">
-          <div className="relative w-44 h-44 sm:w-56 sm:h-56">
-            <div className="w-full h-full rounded-full border-2 border-primary/30 p-2">
-              <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary"
-                style={{ boxShadow: '0 0 30px rgba(230,195,100,0.15)' }}>
-                <img src="/zohaib.jpg" alt="Zohaib Mahar" className="w-full h-full object-cover grayscale contrast-110" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Text */}
+        {/* Text — pehle aata hai mobile aur desktop dono pe */}
         <div className="flex-1 w-full text-center lg:text-left">
           <div className="flex items-center justify-center lg:justify-start gap-3 mb-6 md:mb-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-label-caps text-[11px]"
@@ -104,10 +92,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Photo — desktop pe right side */}
-        <div className="flex-shrink-0 items-center justify-center hidden lg:flex">
-          <div className="relative w-72 h-72 xl:w-96 xl:h-96">
-            <div className="w-full h-full rounded-full border-2 border-primary/30 p-3">
+        {/* Photo — mobile pe text ke baad neeche, desktop pe right side */}
+        <div className="flex-shrink-0 flex items-center justify-center w-full lg:w-auto">
+          <div className="relative w-44 h-44 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-96 xl:h-96">
+            <div className="w-full h-full rounded-full border-2 border-primary/30 p-2 lg:p-3">
               <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary"
                 style={{ boxShadow: '0 0 40px rgba(230,195,100,0.15)' }}>
                 <img src="/zohaib.jpg" alt="Zohaib Mahar" className="w-full h-full object-cover grayscale contrast-110" />
