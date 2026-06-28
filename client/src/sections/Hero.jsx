@@ -54,7 +54,7 @@ export default function Hero() {
         className="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-16 w-full transition-all duration-700"
         style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(30px)' }}
       >
-        {/* Photo — mobile pe upar, desktop pe right side */}
+        {/* Photo — mobile pe upar */}
         <div className="flex-shrink-0 flex items-center justify-center w-full lg:hidden">
           <div className="relative w-44 h-44 sm:w-56 sm:h-56">
             <div className="w-full h-full rounded-full border-2 border-primary/30 p-2">
@@ -68,7 +68,6 @@ export default function Hero() {
 
         {/* Text */}
         <div className="flex-1 w-full text-center lg:text-left">
-          {/* Availability badge */}
           <div className="flex items-center justify-center lg:justify-start gap-3 mb-6 md:mb-10">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-label-caps text-[11px]"
               style={{ background: `${badgeColor}15`, border: `0.5px solid ${badgeColor}40`, color: badgeColor }}>
@@ -98,11 +97,8 @@ export default function Hero() {
               {t.hero.cta_work}
               <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
             </button>
-            <a
-              href="/zohaib_cv.pdf"
-              download="Zohaib_Mahar_CV.pdf"
-              className="px-6 md:px-10 py-3 md:py-4 border border-primary text-primary font-label-caps text-[11px] md:text-label-caps hover:bg-primary/10 transition-all"
-            >
+            <a href="/zohaib_cv.pdf" download="Zohaib_Mahar_CV.pdf"
+              className="px-6 md:px-10 py-3 md:py-4 border border-primary text-primary font-label-caps text-[11px] md:text-label-caps hover:bg-primary/10 transition-all">
               {t.hero.cta_cv}
             </a>
           </div>
